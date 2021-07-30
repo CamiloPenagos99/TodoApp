@@ -51,6 +51,7 @@ h4::first-letter{
 
 .btn{
     margin: 1px;
+    margin-top: 5px;
     background:#ff5e62;
     border: transparent;
     color: black;
@@ -102,3 +103,12 @@ h4::first-letter{
     text-decoration:line-through;
     opacity: 0.6;
 }
+
+.finished spanfinish{
+    text-decoration:none;
+}
+
+.btnedit{
+    background:#003559;
+    color: white;
+} 

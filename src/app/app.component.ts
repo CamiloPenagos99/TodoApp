@@ -17,7 +17,7 @@ export class AppComponent {
 
   tasks:Task[]= [this.tareaUno, this.tareaDos];
 
-  estado=1;
+  public editing:boolean = false;
 
  public getTasks():Task[] {
    return this.tasks;
@@ -40,9 +40,16 @@ export class AppComponent {
     alert("Eliminada:" + id);
   }
 
-  //Editar tarea
+  //habilitar Editar tarea
   editTask(task:Task){
+    this.editing=true;
     this.currenTask=task;
+  }
+
+  //guardar cambios tarea
+  updateTask(){
+    this.editing=true;
+    this.currenTask = new Task(0,"","","",false);
   }
 
  
