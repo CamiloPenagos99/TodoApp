@@ -1,13 +1,104 @@
-/* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
+
 
 body{
     background: #ff9966;
     background: -webkit-linear-gradient(to left, #ff5e62, #ff9966); 
     background: linear-gradient(to left, #ff5e62, #ff9966); 
-    font-family: 'Source Code Pro', monospace;
     height: 100vh;
 }
 
+.list-group-item{
+    margin: 4px;
+    border: 2px solid #ccc;
+    transition: 0.2s;
+}
 
+.list-group-item:hover{
+    border: 2px solid #ff5e62;
+}
 
+.list-group-item-heading{
+   padding: 5px;
+   font-size: 30px;
+   background-color: #e0dede;
+   border-radius: 2px;
+}
+
+.spanfinish{
+    font-weight: bolder;
+    font-size: 12px;
+}
+
+h4::first-letter{
+    text-transform: uppercase;
+}
+
+.list-group-item-text{
+    font-size: 22px;
+}
+
+.list-group-item-text span{
+    font-size: 15px;
+}
+
+.card{
+    border: 2px solid #ff9966;
+    margin-bottom: 2px;
+}
+.form-control{
+    margin: 2px;
+}
+
+.btn{
+    margin: 1px;
+    background:#ff5e62;
+    border: transparent;
+    color: black;
+    font-weight: 600;
+    opacity: 0.8;
+    transition: 0.3s;
+}
+
+.btn:hover{
+    opacity: 1;
+    background:#ff5e62;
+}
+
+.ok{
+    background-color: #3C887E;
+    color: white;
+}
+
+.ok:hover{
+    background-color: #255852;
+    color: white;
+}
+
+.del{
+    background-color: #c2162a;
+    color: white;
+}
+
+.del:hover{
+    background-color: #940d1d;
+    color: white;
+}
+.edit{
+    background-color: #141B41;
+    color: white;
+}
+
+.edit:hover{
+    background-color: #0b144b;
+    color: white;
+}
+
+.actived{
+    opacity: 0.7;
+    border: 2px solid #ff5e62;
+}
+
+.finished{
+    text-decoration:line-through;
+    opacity: 0.6;
+}
