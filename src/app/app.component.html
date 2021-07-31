@@ -7,7 +7,8 @@
 <div class="container" style="padding: 25px">
   <div class="row">
     <div class="col-md-2" style="background-color: rgb(238, 202, 202);"></div>
-    <div class="col-md-8" style="background-color: rgb(248, 215, 215);">
+    <div class="col-md-7" style="background-color: rgb(248, 215, 215);">
+      <div class="content-list">
       <ul class="list-group">
           <li
           *ngFor="let task of getTasks()" 
@@ -18,7 +19,8 @@
             <span>
             <button class="btn ok btn-sm" (click)=doTask(task) title="Terminar">✔</button>
             <button class="btn del btn-sm"
-            (click)=deleteTask(task.id) title="Eliminar">✖</button>
+            (click)=deleteTask(task)
+            title="Eliminar">✖</button>
             <button class="btn edit btn-sm" (click)=editTask(task) title="Editar">✏</button>
             </span>
              
@@ -30,17 +32,21 @@
           </span></p>
         </li>
       </ul>
-      
+      </div>
+    </div>
+
+    <div class="col-md-3 formi" >
       <div class="card mt-5" style="">
-        <div class="card-body">
+        <div class="card-body col-auto">
           <span *ngIf="editing"><h3 class="card-title">Editar tarea</h3></span>
           <span *ngIf="!editing"><h3 class="card-title">Nueva tarea</h3></span>
           <div class="form-group">
+            <label for="" class="form-label">Titulo:</label>
             <input type="text" [(ngModel)]="currenTask.title"  placeholder="Insertar titulo"  class="form-control">
+            <label for="" class="form-label">Descripción:</label>
             <input type="text" [(ngModel)]="currenTask.description"  placeholder="Insertar descripcion" class="form-control">
-            <input type="text" [(ngModel)]="currenTask.priority"  placeholder="Insertar prioridad"  class="form-control">
+            <label for="" class="form-label">Prioridad:</label>
             <select class="form-select form-control" aria-label="multiple select example" [(ngModel)]="currenTask.priority">
-              <option selected>Seleccionar prioridad</option>
               <option value="alta">Alta</option>
               <option value="media">Media</option>
               <option value="baja">Baja</option>
@@ -53,7 +59,6 @@
       </div>
 
     </div>
-    <div class="col-md-2" style="background-color: rgb(238, 202, 202);"></div>
   </div>
 </div>
 
@@ -63,4 +68,3 @@
     src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
   />
   <span></span>
-    
