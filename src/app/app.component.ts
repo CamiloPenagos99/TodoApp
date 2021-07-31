@@ -11,7 +11,8 @@ import {Service} from '../app/services/api.service.service'
 export class AppComponent implements OnInit {
 
   title = 'Angular-TodoList';
-  numberFacts=1;  
+  numberFacts=1;
+  searchWord="";
 
   currenTask:Task = new Task(0,"","","",false);
   aux:Task = new Task(0,"","","",false);
@@ -53,11 +54,12 @@ export class AppComponent implements OnInit {
  }
 
   //Agregar tarea
-  addTask(){
+  addTask(form:any){
     this.currenTask.id=this.tasks.length+1;
     this.tasks.push(this.currenTask);
     this.persistence(this.tasks)
     this.currenTask = new Task(0,"","","",false);
+    form.reset();
   }
 
   //Marcar tarea como realizada
@@ -89,10 +91,11 @@ export class AppComponent implements OnInit {
   }
 
   //guardar cambios tarea
-  updateTask(){
+  updateTask(form:any){
     this.currenTask = new Task(0,"","","",false);
     this.editing=false;
     this.persistence(this.tasks)
+    form.reset();
   }
 
   //Metodos de la lista que es consumida de la api
@@ -116,8 +119,10 @@ export class AppComponent implements OnInit {
   cleanListTask(){
     localStorage.clear();
     this.tasks=[];
+    this.searchWord="";
   }
 
+  //Llenar array del componente, con las frases del api array
   loadFactsArray(array:Array<any>){
     for (let i = 0; i < array.length ; i++) {
       const obj=array[i];
@@ -125,6 +130,11 @@ export class AppComponent implements OnInit {
       this.tasks.push(this.aux);
       this.persistence(this.tasks)
   }
+  }
+
+  //Buscar coincidencias con palabra
+  searchInArray(){
+    alert("Puedes buscar desde el recuadro");
   }
  
 }

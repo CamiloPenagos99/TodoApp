@@ -22,12 +22,14 @@ export class Service {
     return msg; 
   }
 
-  //Consumir la api
+  //Consumir la api, usando cadena de consulta
   getGatFacts(num:string):Observable<any>{
     let header = new HttpHeaders().set('Content-Type','application/json');
 
     return this._http.get(this.url+num , {headers:header})
   }
+
+  
 
 
 }

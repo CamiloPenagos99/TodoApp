@@ -70,6 +70,7 @@ h4::first-letter{
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 10px;
     
 }
 
@@ -166,5 +167,15 @@ h4::first-letter{
 .buttoner{
     
     padding: none;
+}
+
+.search{
+    background-color: #003559;
+    color: white;
+}
+
+.search:hover{
+    background-color: #065e99; 
+    color: white;
 }
 

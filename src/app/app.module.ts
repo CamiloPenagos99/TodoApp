@@ -9,12 +9,14 @@ import { FormsModule } from '@angular/forms';
 
 //Moudulo de peticiones http
 import {HttpClientModule} from "@angular/common/http";
+import { SearchinPipe } from './pipes/searchin.pipe';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SearchinPipe
   ],
   imports: [
     BrowserModule,
