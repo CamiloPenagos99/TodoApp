@@ -10,18 +10,22 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## Tecnologías
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Este proyecto fue realizado con el framework Angular y bootstrap
 
-## Running unit tests
+## Funcionalidad
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Todo List, que permite crear, editar, borrar y marcar como realizada las tareas ingresadas por el usuario.
 
-## Running end-to-end tests
+Permite hacer busqueda por la descripción de la tarea
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Se hace uso de un api, para generar tareas aleatorias y llenar el list group
 
-## Further help
+## Pendientes
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Completar el diseño responsive
+
+Guardar las tareas en una base de datos, Firebase
+
+Otras funcionalidades
