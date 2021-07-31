@@ -6,29 +6,58 @@
 
 <div class="container" style="padding: 25px">
   <div class="row">
-    <div class="col-md-2" style="background-color: rgb(238, 202, 202);"></div>
-    <div class="col-md-7" style="background-color: rgb(248, 215, 215);">
+    <div class="col-md-2 formi">
+      <div class="card mt-5" style="">
+        <div class="card-body col-auto">
+          <h3 class="card-title">Aleatorio:</h3>
+          <div class="form-group">
+            <form #FactsForm="ngForm">
+            <label for="" class="form-label">Cantidad:</label>
+            <input type="number" name="number" #number="ngModel" [(ngModel)]="numberFacts" placeholder="Frases de gatos"  class="form-control"
+            min="1" max="10" required>
+            <p *ngIf="number.touched && !number.valid" style="color:rgb(153, 11, 11)">Ingresa numero entre 1 y 100</p>
+            <p>Lista de frases de gatos aletorias</p>
+          </form>
+          </div>
+          <button (click)="listGetFactsApi()" class="btn btn-primary" [disabled]="!FactsForm.valid">Generar</button>
+         
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-md-7" style="background-color: #f2f2f256;">
+      <div class="buttoner" style="padding: 5px">
+        <button class="btn btn-sm">Buscar</button>
+        <button class="btn del btn-sm" (click)="cleanListTask()">Limpiar</button></div>
       <div class="content-list">
       <ul class="list-group">
           <li
           *ngFor="let task of getTasks()" 
-          class="list-group-item " 
+          class="list-group-item "
+          fade
           [class.actived] = "task==currenTask"
           [class.finished] = "task.status">
           <h4 class="list-group-item-heading d-flex justify-content-between align-items-center">{{task.title}}
             <span>
-            <button class="btn ok btn-sm" (click)=doTask(task) title="Terminar">✔</button>
+            <span *ngIf="!task.status">
+              <button class="btn ok btn-sm" (click)=doTask(task) title="Terminar">✔</button>
+            </span>
+            
             <button class="btn del btn-sm"
             (click)=deleteTask(task)
             title="Eliminar">✖</button>
+
+            <span *ngIf="!task.status">
             <button class="btn edit btn-sm" (click)=editTask(task) title="Editar">✏</button>
+            </span>
             </span>
              
           </h4>
 
          
           <p class="list-group-item-text  d-flex justify-content-between align-items-center">{{task.description}} <span>{{task.priority}}
-            <span  *ngIf ="task.status" style="color: rgb(2, 90, 2)" class="spanfinish">Terminada</span>
+            <span  *ngIf ="task.status" style="color: rgb(2, 90, 2)" class="spanfinish"> Terminada</span>
           </span></p>
         </li>
       </ul>
@@ -41,20 +70,26 @@
           <span *ngIf="editing"><h3 class="card-title">Editar tarea</h3></span>
           <span *ngIf="!editing"><h3 class="card-title">Nueva tarea</h3></span>
           <div class="form-group">
+            <form #TaskForm="ngForm">
             <label for="" class="form-label">Titulo:</label>
-            <input type="text" [(ngModel)]="currenTask.title"  placeholder="Insertar titulo"  class="form-control">
+            <input type="text" name="title" #title="ngModel" [(ngModel)]="currenTask.title"  placeholder="Insertar titulo"  class="form-control" required>
+            <p *ngIf="title.touched && !title.valid" style="color: rgb(148, 9, 9);">Titulo es obligatorio</p>
             <label for="" class="form-label">Descripción:</label>
-            <input type="text" [(ngModel)]="currenTask.description"  placeholder="Insertar descripcion" class="form-control">
+            <input type="text" name="description" #description="ngModel" [(ngModel)]="currenTask.description"  placeholder="Insertar descripcion" class="form-control" required>
+            <p *ngIf="description.touched && !description.valid" style="color: rgb(148, 9, 9);">Descripción es obligatoria</p>
             <label for="" class="form-label">Prioridad:</label>
-            <select class="form-select form-control" aria-label="multiple select example" [(ngModel)]="currenTask.priority">
+            <select class="form-select form-control" name="priority" #priority="ngModel" aria-label="multiple select example" [(ngModel)]="currenTask.priority" required>
               <option value="alta">Alta</option>
               <option value="media">Media</option>
               <option value="baja">Baja</option>
             </select>
+            <p *ngIf="priority.touched && !priority.valid" style="color: rgb(148, 9, 9);">Seleccione la prioridad</p>
+            </form>
           </div>
-          <span *ngIf="editing"><button (click)="updateTask()" class="btn btn-primary btnedit" >Editar</button></span>
-          <span *ngIf="!editing"><button (click)="addTask()" class="btn btn-primary">Agregar</button></span>
-         
+          
+          <span *ngIf="editing"><button (click)="updateTask()" class="btn btn-primary btnedit" 
+            [disabled]="!TaskForm.valid">Editar</button></span>
+          <span *ngIf="!editing"><button (click)="addTask()" class="btn btn-primary btnadd" [disabled]="!TaskForm.valid">Agregar</button></span>
         </div>
       </div>
 

@@ -5,6 +5,11 @@ import { AppComponent } from './app.component';
 //nuevos modulos
 
 import { FormsModule } from '@angular/forms';
+//Modulo de rutas
+
+//Moudulo de peticiones http
+import {HttpClientModule} from "@angular/common/http";
+
 
 
 @NgModule({
@@ -13,7 +18,8 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

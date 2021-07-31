@@ -1,15 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {Task} from './model/task'
+import {Service} from '../app/services/api.service.service'
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [Service]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   title = 'Angular-TodoList';
-
+  numberFacts=1;  
 
   currenTask:Task = new Task(0,"","","",false);
   aux:Task = new Task(0,"","","",false);
@@ -18,7 +20,10 @@ export class AppComponent {
 
   public editing:boolean = false;
 
-  ngOnInit(): void {
+  constructor(private _Service: Service){
+
+  }
+  ngOnInit():void {
     this.loaded();
   }
 
@@ -39,7 +44,7 @@ export class AppComponent {
 }
 
  public getTasks():Task[] {
-   return this.tasks;
+   return this.tasks.reverse();
  }
 
  //Metodo para persistir el arreglo con localstorage
@@ -56,9 +61,14 @@ export class AppComponent {
   }
 
   //Marcar tarea como realizada
-  doTask(task:Task){
-     task.status=true;
-     this.persistence(this.tasks)
+  doTask(taskn:Task){
+    taskn.status=true;
+     //enviar la tarea al ultimo lugar
+    this.tasks = this.tasks.filter(task => task != taskn);
+    this.tasks.unshift(taskn);
+    this.currenTask=new Task(0,"","","",false);
+    this.persistence(this.tasks)
+    
   }
 
   //eliminar tarea
@@ -85,5 +95,36 @@ export class AppComponent {
     this.persistence(this.tasks)
   }
 
+  //Metodos de la lista que es consumida de la api
+
+  listGetFactsApi(){
+    this._Service.getGatFacts(this.numberFacts+"").subscribe(
+      respose=>{
+          this.cleanListTask();
+          console.log(respose.data);
+          this.loadFactsArray(respose.data);
+      },
+
+      error=>{
+          console.log("error");
+      }
+    )
+  }
+
+  //Limpiar Tareas
+
+  cleanListTask(){
+    localStorage.clear();
+    this.tasks=[];
+  }
+
+  loadFactsArray(array:Array<any>){
+    for (let i = 0; i < array.length ; i++) {
+      const obj=array[i];
+      this.aux = new Task(i,"fact-"+i,obj.fact,"media",false);
+      this.tasks.push(this.aux);
+      this.persistence(this.tasks)
+  }
+  }
  
 }

@@ -5,7 +5,24 @@ body{
     background: -webkit-linear-gradient(to left, #ff5e62, #ff9966); 
     background: linear-gradient(to left, #ff5e62, #ff9966); 
     height: 100vh;
+
 }
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    }
+    ::-webkit-scrollbar-track-piece  {
+    background-color: #ff5e62;
+    }
+    ::-webkit-scrollbar-thumb:vertical {
+    height: 20px;
+    background-color: #f8f8f8c2;
+    }
+
+
 
 .list-group-item{
     margin: 4px;
@@ -17,13 +34,15 @@ body{
     border: 2px solid #ff5e62;
 }
 
-/*.content-list{
- overflow: scroll
-} */
+.content-list{
+    padding: 5px;
+    height: 85vh;
+    overflow: auto
+} 
 
 .list-group-item-heading{
    padding: 5px;
-   font-size: 30px;
+   font-size: 20px;
    background-color: #e0dede;
    border-radius: 2px;
 }
@@ -38,11 +57,13 @@ h4::first-letter{
 }
 
 .list-group-item-text{
-    font-size: 22px;
+    font-size: 17px;
 }
 
 .list-group-item-text span{
     font-size: 15px;
+    color: rgb(51, 49, 49);
+    font-weight: 600;
 }
 
 .formi{
@@ -51,12 +72,14 @@ h4::first-letter{
     justify-content: center;
     
 }
+
+
 .card{ 
     border: 2px solid black;
     border-radius: 5px;
     box-shadow: 2px 2px 4px rgba(22, 22, 22, 0.616);
     margin-bottom: 2px;
-    background-color: #f2fef2;
+    background-color: #f2fef2a2;
 }
 .form-control{
     margin-bottom: 5px;
@@ -119,15 +142,29 @@ h4::first-letter{
 }
 
 .finished{
+    font-size: 17px;
     text-decoration:line-through;
     opacity: 0.6;
 }
 
-.finished spanfinish{
+.spanfinish{
     text-decoration:none;
+    font-weight: bolder;
 }
 
 .btnedit{
     background:#003559;
     color: white;
 } 
+
+.btnadd[disabled]{
+    background-color: #ff5e62;
+    opacity: 0.6;
+    cursor: not-allowed;
+} 
+
+.buttoner{
+    
+    padding: none;
+}
+
